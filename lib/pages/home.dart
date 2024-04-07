@@ -95,7 +95,10 @@ class _HomeState extends State<Home> {
                       SizedBox(height: 20),
                       TextButton(
                           onPressed: (){
-                            Navigator.pushNamed(context, '/boards');
+                            BoardSetup setup = BoardSetup(
+                              fenCode: FenCodes.badPosition,
+                            );
+                            Navigator.pushNamed(context, '/boards', arguments: setup);
                           },
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -151,4 +154,12 @@ class _HomeState extends State<Home> {
       )
     );
   }
+}
+// Define a class to represent the data to pass to OpenBoardPage
+class BoardSetup {
+  final String? fenCode;
+
+  BoardSetup({
+    required this.fenCode,
+  });
 }

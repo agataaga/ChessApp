@@ -22,13 +22,13 @@ class _BoardViewState extends State<BoardView> {
 
   @override
   Widget build(BuildContext context) {
-    final BoardSetup? shit = ModalRoute.of(context)!.settings.arguments as BoardSetup?;
-    if (shit != null){
-    isDone = shit.isDone ?? false;
-    fenCode = shit.fenCode;
+    final BoardSetup? chessData = ModalRoute.of(context)!.settings.arguments as BoardSetup?;
+    if (chessData != null){
+    isDone = chessData.isDone ?? false;
+    fenCode = chessData.fenCode;
     }
 
-    if(shit != null) {
+    if(chessData != null) {
       return Scaffold(
           backgroundColor: Colors.grey[900],
           appBar: AppBar(
@@ -54,7 +54,7 @@ class _BoardViewState extends State<BoardView> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    shit.fenCode,
+                    chessData.fenCode,
                     style: TextStyle(
                       color: Colors.deepPurple[400],
                       fontSize: 20.0,
@@ -66,7 +66,7 @@ class _BoardViewState extends State<BoardView> {
                     height: 400,
                     color: Colors.grey,
                     child: MyChessBoardPage(
-                      fen: shit.fenCode ?? '',
+                      fen: chessData.fenCode ?? '',
                     ),
                   ),
                   SizedBox(height:20),
@@ -88,7 +88,7 @@ class _BoardViewState extends State<BoardView> {
                           if (index != -1) {
                             FenCodes.codes[index].isDone =
                                 newValue;
-                            shit.isDone= isDone;// Update the FenCode's isDone property
+                            chessData.isDone= isDone;// Update the FenCode's isDone property
                           };
                         };
                       });
